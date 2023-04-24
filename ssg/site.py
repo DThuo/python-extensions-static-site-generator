@@ -1,5 +1,6 @@
 import sys
 from pathlib import Path
+from ssg import extensions
 
 
 class Site:
@@ -7,10 +8,6 @@ class Site:
         self.source = Path(source)
         self.dest = Path(dest)
         self.parsers = parsers or []
-
-    def create_dir(self, path):
-        directory = self.dest / path.relative_to(self.source)
-        directory.mkdir(parents=True, exist_ok=True)
 
     def load_parser(self, ext):
         for parser in self.parsers:
@@ -35,5 +32,5 @@ class Site:
                 self.run_parser(path)
 
     @staticmethod
-    def error(message):
+    def error(message): 
         sys.stderr.write("\x1b[1;31m{}\n".format(message))
