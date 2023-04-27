@@ -3,10 +3,10 @@ import sys
 
 from typing import List
 from pathlib import Path
-
+from ssg import hooks
 from docutils.core import publish_parts
 from markdown import markdown
-from ssg.content import Content, hooks
+from ssg.content import Content
 
 
 class Parser:
